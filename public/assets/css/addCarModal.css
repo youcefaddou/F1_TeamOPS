@@ -1,92 +1,121 @@
 .modal {
-  display: none;
-  position: fixed;
-  z-index: 1000;
-  left: 0; top: 0;
-  width: 100vw; height: 100vh;
-  overflow: auto;
-  background: rgba(0,0,0,0.25);
-  animation: fadeInBg 0.3s;
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: auto;
+    background: rgba(0, 0, 0, 0.25);
+    animation: fadeInBg 0.3s;
 }
+
 .modal-content {
-  background: #fff;
-  margin: 5% auto;
-  border-radius: 16px;
-  padding: 2.5rem 2rem 2rem 2rem;
-  width: 100%;
-  max-width: 420px;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
-  position: relative;
-  animation: popIn 0.35s cubic-bezier(.77,0,.18,1);
+    background: #fff;
+    margin: 5% auto;
+    border-radius: 16px;
+    padding: 2.5rem 2rem 2rem 2rem;
+    width: 100%;
+    max-width: 420px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+    position: relative;
+    animation: popIn 0.35s cubic-bezier(.77, 0, .18, 1);
 }
+
 .close {
-  position: absolute;
-  right: 1.2rem;
-  top: 1.2rem;
-  font-size: 1.7rem;
-  color: #e10600;
-  cursor: pointer;
-  transition: color 0.2s, transform 0.2s;
+    position: absolute;
+    right: 1.2rem;
+    top: 1.2rem;
+    font-size: 1.7rem;
+    color: #e10600;
+    cursor: pointer;
+    transition: color 0.2s, transform 0.2s;
 }
+
 .close:hover {
-  color: #b30000;
-  transform: scale(1.2) rotate(10deg);
+    color: #b30000;
+    transform: scale(1.2) rotate(10deg);
 }
+
 .modal-content h2 {
-  margin-top: 0;
-  margin-bottom: 1.2rem;
-  text-align: center;
-  color: #e10600;
+    margin-top: 0;
+    margin-bottom: 1.2rem;
+    text-align: center;
+    color: #e10600;
 }
+
 .form-group {
-  margin-bottom: 1.1rem;
-  display: flex;
-  flex-direction: column;
+    margin-bottom: 1.1rem;
+    display: flex;
+    flex-direction: column;
 }
+
 .form-group label {
-  margin-bottom: 0.3rem;
-  font-weight: 600;
+    margin-bottom: 0.3rem;
+    font-weight: 600;
 }
-.form-group input, .form-group select {
-  padding: 0.6rem 0.7rem;
-  border-radius: 8px;
-  border: 1px solid #ddd;
-  font-size: 1rem;
-  transition: border 0.2s;
+
+.form-group input,
+.form-group select {
+    padding: 0.6rem 0.7rem;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-size: 1rem;
+    transition: border 0.2s;
 }
-.form-group input:focus, .form-group select:focus {
-  border: 1.5px solid #e10600;
-  outline: none;
+
+.form-group input:focus,
+.form-group select:focus {
+    border: 1.5px solid #e10600;
+    outline: none;
 }
+
 .submit-btn {
-  width: 100%;
-  background: #e10600;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  padding: 0.8rem 0;
-  font-size: 1.1rem;
-  font-weight: 700;
-  margin-top: 0.7rem;
-  cursor: pointer;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
-  transition: background 0.2s, transform 0.2s;
+    width: 100%;
+    background: linear-gradient(90deg, #000, #e90000);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 0.8rem 0;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-top: 0.7rem;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.10);
+    transition: background 0.2s, transform 0.2s;
 }
+
 .submit-btn:hover {
-  background: #b30000;
-  transform: translateY(-2px) scale(1.04);
+    background: linear-gradient(90deg, #353434, #ff3d3dc7);
+    transform: translateY(-2px) scale(1.04);
 }
+
 @keyframes fadeInBg {
-  from { background: rgba(0,0,0,0); }
-  to { background: rgba(0,0,0,0.25); }
+    from {
+        background: rgba(0, 0, 0, 0);
+    }
+
+    to {
+        background: rgba(0, 0, 0, 0.25);
+    }
 }
+
 @keyframes popIn {
-  0% { transform: scale(0.85) translateY(40px); opacity: 0; }
-  100% { transform: scale(1) translateY(0); opacity: 1; }
+    0% {
+        transform: scale(0.85) translateY(40px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+    }
 }
+
 @media (max-width: 600px) {
-  .modal-content {
-    padding: 1.2rem 0.5rem 1.2rem 0.5rem;
-    max-width: 98vw;
-  }
+    .modal-content {
+        padding: 1.2rem 0.5rem 1.2rem 0.5rem;
+        max-width: 98vw;
+    }
 }
