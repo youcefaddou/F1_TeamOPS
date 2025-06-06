@@ -1,0 +1,37 @@
+{% extends "../layouts/base.twig" %}
+{% block style %}
+	<link rel="stylesheet" href="./assets/css/material.css">
+	<link rel="stylesheet" href="./assets/css/addMaterialModal.css">
+{% endblock %}
+
+{% block title %}
+	<title>Matériel</title>
+{% endblock %}
+
+{% block main %}
+	<main>
+		<section id="materialContainer">
+			<h1>Liste du matériel</h1>
+    <table>
+    <thead class="material-list">
+        <tr>
+            <th>Voitures</th>
+            <th>Moteur</th>
+            <th>Pièces détachées</th>
+            <th>Pneus</th>
+        </tr>
+    </thead>
+    <tbody>
+
+		</section>
+
+
+	</main>
+{% endblock %}
+
+{% block scripts %}
+	<script src="/assets/js/material.js"></script>
+    <script src="/assets/js/addMaterialModal.js"></script>
+    <script src="/assets/js/editMaterialModal.js"></script>
+    <script src="/assets/js/deleteMaterialModal.js"></script>
+{% endblock %}

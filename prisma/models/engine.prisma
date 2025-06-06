@@ -1,0 +1,10 @@
+
+model Engine {
+  id        Int      @id @default(autoincrement())
+  code      String
+  state     String
+  teamId    Int
+  createdAt DateTime @default(now())
+  team      Team     @relation(fields: [teamId], references: [id])
+  incidents Incident[]
+}

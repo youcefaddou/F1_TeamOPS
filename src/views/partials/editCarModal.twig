@@ -1,0 +1,27 @@
+<div id="editCarModal" class="modal">
+  <div class="modal-content">
+    <span class="close" id="closeEditCarModal">&times;</span>
+    <h2>Modifier la voiture</h2>
+    <form id="editCarForm" method="POST" action="/materials/car/edit">
+      <input type="hidden" id="editCarId" name="carId" />
+      <div class="form-group">
+        <label for="editChassisNum">Numéro de châssis</label>
+        <input type="text" id="editChassisNum" name="chassisNum" required />
+      </div>
+      <div class="form-group">
+        <label for="editModel">Modèle</label>
+        <input type="text" id="editModel" name="model" required />
+      </div>
+      <div class="form-group">
+        <label for="editPilotId">Pilote assigné</label>
+        <select id="editPilotId" name="pilotId" required>
+          <option value="">Sélectionner un pilote</option>
+          {% for pilot in pilots %}
+            <option value="{{ pilot.id }}">{{ pilot.firstName }} {{ pilot.lastName }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <button type="submit" class="submit-btn">Enregistrer</button>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+<div id="addCarModal" class="modal">
+  <div class="modal-content">
+    <span class="close" id="closeAddCarModal">&times;</span>
+    <h2>Ajouter une voiture</h2>
+    <form id="addCarForm" method="POST" action="/materials/car">
+      <div class="form-group">
+        <label for="chassisNum">Numéro de châssis</label>
+        <input type="text" id="chassisNum" name="chassisNum"/>
+      </div>
+      <div class="form-group">
+        <label for="model">Modèle</label>
+        <input type="text" id="model" name="model"/>
+      </div>
+      <div class="form-group">
+        <label for="pilotId">Pilote assigné</label>
+        <select id="pilotId" name="pilotId">
+          <option value="">Sélectionner un pilote</option>
+          {% for pilot in pilots %}
+            <option value="{{ pilot.id }}">{{ pilot.firstName }} {{ pilot.lastName }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <button type="submit" class="submit-btn">Ajouter</button>
+    </form>
+  </div>
+</div>

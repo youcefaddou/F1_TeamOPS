@@ -1,0 +1,28 @@
+{% block style %}
+	<link rel="stylesheet" href="./assets/css/header.css">
+{% endblock %}
+<header>
+	<img src="/assets/images/teamopslogo.png" alt="F1 TeamOps Logo" class="logo">
+	<button class="burger-menu" aria-label="Menu" aria-controls="main-nav">
+		<svg width="30" height="30" viewBox="0 0 100 80" fill="#fff">
+			<rect width="100" height="20"></rect>
+			<rect y="30" width="100" height="20"></rect>
+			<rect y="60" width="100" height="20"></rect>
+		</svg>
+	</button>
+	<nav>
+		<ul id="main-nav" class="nav-list">
+			{% if team and team.id %}
+				<li><a href="/dashboard">Tableau de bord</a></li>
+				<li><a href="/members">Membres</a></li>
+				<li><a href="/materials">Matériel</a></li>
+				<li><a href="/grandprix">Grand Prix</a></li>
+				<li><a href="/incidents">Incidents</a></li>
+				<li><a href="/logout">Déconnexion</a></li>
+			{% else %}
+				<li><a href="/register">S'inscrire</a></li>
+				<li><a href="/login">Se connecter</a></li>
+			{% endif %}
+		</ul>
+	</nav>
+</header>

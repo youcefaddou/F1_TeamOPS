@@ -1,0 +1,45 @@
+<link rel="stylesheet" href="./assets/css/editMemberModal.css">
+
+<div id="editMemberModal" class="modal" style="display:none;">
+			<div class="modal-content">
+				<span class="close-modal" id="closeEditMemberModal">&times;</span>
+				<h2>Formulaire d'édition de membre</h2>
+				<form id="editMemberForm" action="/members/edit/{{ editMemberId|default(member.id) }}" method="post" enctype="multipart/form-data">
+					<label for="editFirstName">Prénom:</label>
+					<input type="text" id="editFirstName" name="firstName" value="{{ member.firstName|default('') }}">
+
+					<label for="editLastName">Nom:</label>
+					<input type="text" id="editLastName" name="lastName" value="{{ member.lastName|default('') }}">
+
+					<label for="editEmail">Email:</label>
+					<input type="email" id="editEmail" name="email" value="{{ member.email|default('') }}">
+					{% if error.email %}
+						<p class="error-email">{{ error.email }}</p>
+					{% endif %}
+
+					<label for="editRole">Role:</label>
+					<select id="editRole" name="role">
+						<option value="PILOT" {% if member.role=='PILOT' %}selected{% endif %}>Pilote</option>
+						<option value="ENGINEER" {% if member.role=='ENGINEER' %}selected{% endif %}>Ingénieur</option>
+						<option value="MECHANIC" {% if member.role=='MECHANIC' %}selected{% endif %}>Mécanicien</option>
+						<option value="DIRECTOR" {% if member.role=='DIRECTOR' %}selected{% endif %}>Directeur</option>
+						<option value="OTHER" {% if member.role=='OTHER' %}selected{% endif %}>Autre</option>
+					</select>
+
+					<label for="editNationality">Nationalité:</label>
+					<input type="text" id="editNationality" name="nationality" value="{{ member.nationality|default('') }}">
+
+					<label for="editAge">Age:</label>
+					<input type="number" id="editAge" name="age" value="{{ member.age|default('') }}">
+
+					<label for="editAvatar">Avatar (optionnel):</label>
+					<input type="file" name="avatar" id="editAvatar">
+
+					<button type="submit">Modifier</button>
+				</form>
+			</div>
+		</div>
+
+        {% block scripts %}
+	<script src="/assets/js/editMemberModal.js"></script>
+{% endblock %}

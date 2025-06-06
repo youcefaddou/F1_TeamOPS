@@ -1,0 +1,9 @@
+model GrandPrix {
+  id        Int      @id @default(autoincrement())
+  name      String
+  circuit   String
+  country   String
+  date      DateTime
+  results   Result[]
+  incidents Incident[]
+}

@@ -1,0 +1,79 @@
+{% extends "../layouts/base.twig" %}
+{% block style %}
+	<link rel="stylesheet" href="./assets/css/material.css">
+	<link rel="stylesheet" href="./assets/css/addMaterialModal.css">
+{% endblock %}
+
+{% block title %}
+	<title>Matériel</title>
+{% endblock %}
+
+{% block main %}
+	<main>
+		<section id="materialContainer">
+			<h1>Liste du matériel</h1>
+            <div class="carousel-container">
+                <div class="carousel-wrapper">
+                    <button class="carousel-button prev" id="carouselPrevBtn"><span>←</span></button>
+                    <div class="carousel-content">
+                        <div class="carousel-track" id="carouselTrack">
+                            <div class="carousel-item" data-link="/materials/car">
+                                <div class="bento-card">
+                                    <div class="bento-image">
+                                        <img src="/assets/images/f1car.jpeg" alt="Voiture F1" />
+                                    </div>
+                                    <div class="bento-content">
+                                        <h3>Voitures</h3>
+                                        <p>Les monoplaces de l'équipe</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item" data-link="/materials/engine">
+                                <div class="bento-card">
+                                    <div class="bento-image">
+                                        <img src="/assets/images/moteurf1.jpg" alt="Moteur F1" />
+                                    </div>
+                                    <div class="bento-content">
+                                        <h3>Moteur</h3>
+                                        <p>Les moteurs disponibles</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item" data-link="/materials/parts">
+                                <div class="bento-card">
+                                    <div class="bento-image">
+                                        <img src="/assets/images/pieces-detachees.png" alt="Pièces détachées" />
+                                    </div>
+                                    <div class="bento-content">
+                                        <h3>Pièces détachées</h3>
+                                        <p>Les pièces de rechange</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item" data-link="/materials/tyres">
+                                <div class="bento-card">
+                                    <div class="bento-image">
+                                        <img src="/assets/images/pneuf1.jpg" alt="Pneus F1" />
+                    
+                                    </div>
+                                    <div class="bento-content">
+                                        <h3>Pneus</h3>
+                                        <p>Les pneus pour la course</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-button next" id="carouselNextBtn"><span>→</span></button>
+                </div>
+                <div class="carousel-dots" id="carouselDots"></div>
+            </div>
+		</section>
+
+
+	</main>
+{% endblock %}
+
+{% block script %}
+    <script src="/assets/js/materialCarousel.js"></script>
+{% endblock %}

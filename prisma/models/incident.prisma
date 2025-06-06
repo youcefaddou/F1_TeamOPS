@@ -1,0 +1,19 @@
+model Incident {
+  id         Int      @id @default(autoincrement())
+  type       String   // exemple: "casse moteur", "sortie de piste"
+  description String?
+  date       DateTime @default(now())
+  carId      Int?
+  engineId   Int?
+  partId     Int?
+  pilotId    Int?
+  teamId     Int
+  grandPrixId Int?
+  resolved   Boolean  @default(false)
+  team       Team     @relation(fields: [teamId], references: [id])
+  car        Car?     @relation(fields: [carId], references: [id])
+  engine     Engine?  @relation(fields: [engineId], references: [id])
+  part       Part?    @relation(fields: [partId], references: [id])
+  pilot      Member?  @relation(fields: [pilotId], references: [id])
+  grandPrix  GrandPrix? @relation(fields: [grandPrixId], references: [id])
+}

@@ -1,0 +1,9 @@
+model Part {
+  id        Int      @id @default(autoincrement())
+  reference String
+  type      String
+  quantity  Int
+  teamId    Int
+  team      Team     @relation(fields: [teamId], references: [id])
+  incidents Incident[]
+}

@@ -1,0 +1,35 @@
+html, body {
+    font-family: 'Formula1', sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow-x: hidden; 
+}
+#dashboard-section {
+    background: rgba(255, 255, 255, 0.897);
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    margin: auto;
+    border-radius: 10px;
+    min-height: 80vh;
+    padding: 1rem;
+}
+
+h1 {
+    font-size: 2rem;
+    color: #000000;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.error-email {
+    color: #ff0000;
+    font-size: 0.875rem;
+}
+
+@media (max-width: 768px) {
+    #login-section {
+        padding: 1rem;
+    }
+}

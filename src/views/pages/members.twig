@@ -1,0 +1,136 @@
+{% extends "../layouts/base.twig" %}
+{% block style %}
+	<link rel="stylesheet" href="./assets/css/members.css">
+	<link rel="stylesheet" href="./assets/css/addMemberModal.css">
+{% endblock %}
+
+{% block title %}
+	<title>Membres</title>
+{% endblock %}
+
+{% block main %}
+	<main>
+		<section id="membersContainer">
+			<h1>Liste des membres</h1>
+			<div class="addMemberBtn">
+				<svg style="position: absolute; width: 0; height: 0;">
+					<filter width="300%" x="-100%" height="300%" y="-100%" id="unopaq">
+						<feColorMatrix values="1 0 0 0 0
+																																			            0 1 0 0 0
+																																			            0 0 1 0 0
+																																			            0 0 0 9 0"></feColorMatrix>
+					</filter>
+					<filter width="300%" x="-100%" height="300%" y="-100%" id="unopaq2">
+						<feColorMatrix values="1 0 0 0 0
+																																			            0 1 0 0 0
+																																			            0 0 1 0 0
+																																			            0 0 0 3 0"></feColorMatrix>
+					</filter>
+					<filter width="300%" x="-100%" height="300%" y="-100%" id="unopaq3">
+						<feColorMatrix values="1 0 0 0.2 0
+																																			            0 1 0 0.2 0
+																																			            0 0 1 0.2 0
+																																			            0 0 0 2 0"></feColorMatrix>
+					</filter>
+				</svg>
+				<button class="real-button" id="openAddMemberModal"></button>
+				<div class="backdrop"></div>
+				<div class="button-container" id="openAddMemberModal">
+					<div class="spin spin-blur"></div>
+					<div class="spin spin-intense"></div>
+					<div class="backdrop"></div>
+					<div class="button-border" id="openAddMemberModal">
+						<div class="spin spin-inside"></div>
+						<button id="openAddMemberModal" class="buttonadd">Ajouter un membre</button>
+					</div>
+				</div>
+				{# <button id="openAddMemberModal" class="btn-add-member">Ajouter un membre</button> #}
+			</div>
+
+			<ul class="members-list">
+				{% for member in members %}
+					<li class="member-card" data-member-id="{{ member.id }}" data-member-firstname="{{ member.firstName }}" data-member-lastname="{{ member.lastName }}" data-member-email="{{ member.email }}" data-member-role="{{ member.role }}" data-member-nationality="{{ member.nationality }}" data-member-age="{{ member.age }}">
+						{% if member.avatarUrl %}
+							<img src="{{ member.avatarUrl }}" alt="avatar">
+						{% endif %}
+						<span class="member-name">{{ member.firstName }}
+							{{ member.lastName }}</span>
+						<span class="member-role">{{ member.role }}</span>
+						<div class="member-actions">
+							<button class="btn-edit openEditModal" data-member-id="{{ member.id }}">Modifier</button>
+							<button class="btn-delete openDeleteModal" data-member-id="{{ member.id }}">Supprimer</button>
+						</div>
+					</li>
+				{% else %}
+					<li>Aucun membre pour cette équipe.</li>
+				{% endfor %}
+			</ul>
+
+		</section>
+
+		<div id="addMemberModal" class="modal" style="display:none;">
+			<div class="modal-content">
+				<span class="close-modal" id="closeAddMemberModal">&times;</span>
+				<h2>Formulaire d'ajout de membres</h2>
+				<form action="/members/add" method="post" enctype="multipart/form-data">
+					<label for="firstName">Prénom:</label>
+					<input type="text" id="firstName" name="firstName">
+
+					<label for="lastName">Nom:</label>
+					<input type="text" id="lastName" name="lastName">
+
+					<label for="email">Email:</label>
+					<input type="email" id="email" name="email">
+					{% if error.email %}
+						<p class="error-email">{{ error.email }}</p>
+					{% endif %}
+
+					<label for="password">Mot de passe:</label>
+					<input type="password" id="password" name="password">
+
+					<label for="role">Role:</label>
+					<select id="role" name="role">
+						<option value="PILOT">Pilote</option>
+						<option value="ENGINEER">Ingénieur</option>
+						<option value="MECHANIC">Mécanicien</option>
+						<option value="DIRECTOR">Directeur</option>
+						<option value="OTHER">Autre</option>
+					</select>
+
+					<label for="nationality">Nationalité:</label>
+					<input type="text" id="nationality" name="nationality">
+
+					<label for="age">Age:</label>
+					<input type="number" id="age" name="age">
+
+					<label for="avatar">Avatar (optionnel):</label>
+					<input type="file" name="avatar" id="avatar">
+
+					<button type="submit">Ajouter</button>
+				</form>
+			</div>
+		</div>
+		<div id="deleteMemberModal" class="modal" style="display:none;">
+			<div class="modal-content">
+				<span class="close-modal" id="closeDeleteMemberModal">&times;</span>
+				<h2>Supprimer ce membre ?</h2>
+				<form id="deleteMemberForm" method="post" action="">
+					<button type="submit" class="btn-delete">Confirmer la suppression</button>
+				</form>
+			</div>
+		</div>
+		{% set editMemberObj = editMember %}
+		{% set editMemberIdVal = editMemberId %}
+		{% include "pages/editMember.twig" with {
+    member: editMemberObj,
+    error: error,
+    editMemberId: editMemberIdVal
+	} %}
+
+	</main>
+{% endblock %}
+
+{% block scripts %}
+	<script src="/assets/js/addMemberModal.js"></script>
+	<script src="/assets/js/editMemberModal.js"></script>
+{% endblock %}

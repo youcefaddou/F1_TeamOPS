@@ -1,0 +1,25 @@
+model Member {
+  id        Int      @id @default(autoincrement())
+  firstName String
+  lastName  String
+  email     String   @unique
+  password  String   // hashé
+  role      Role     // enum
+  teamId    Int
+  nationality String?
+  age       Int?
+  avatarUrl String?
+  createdAt DateTime  @default(now())
+  team      Team      @relation(fields: [teamId], references: [id])
+  incidents Incident[]
+  results   Result[]
+  cars      Car[]     @relation("PilotCars")
+}
+
+enum Role {
+  PILOT
+  ENGINEER
+  MECHANIC
+  DIRECTOR
+  OTHER
+}

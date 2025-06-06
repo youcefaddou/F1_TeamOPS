@@ -1,0 +1,42 @@
+{% extends "../layouts/base.twig" %}
+{% block style %}
+	<link rel="stylesheet" href="./assets/css/register.css">
+{% endblock %}
+
+{% block title %}
+	<title>Inscription</title>
+{% endblock %}
+
+{% block main %}
+	<main>
+		<section id="register-section">
+			<h2>Formulaire d'inscription</h2>
+
+			<form action="" method="post">
+				<label for="name">Nom de l'écurie:</label>
+				<input type="text" id="name" name="name">
+
+				<label for="country">Pays:</label>
+				<input type="text" id="country" name="country">
+
+				<label for="director">Nom du directeur:</label>
+				<input type="text" id="director" name="director">
+
+				<label for="email">Email:</label>
+				<input type="email" id="email" name="email">
+				{% if error.email %}
+					<p class="error-email">{{ error.email }}</p>
+				{% endif %}
+				<label for="password">Mot de passe:</label>
+				<input type="password" id="password" name="password">
+
+				<label for="confirmPassword">Confirmer le mot de passe:</label>
+				<input type="password" id="confirmPassword" name="confirmPassword">
+				{% if error.confirmPassword %}
+					<p class="error-confirmPassword">{{ error.confirmPassword }}</p>
+				{% endif %}
+				<button type="submit">S'inscrire</button>
+			</form>
+		</section>
+	</main>
+{% endblock %}

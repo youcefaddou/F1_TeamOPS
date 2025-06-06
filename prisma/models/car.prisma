@@ -1,0 +1,12 @@
+model Car  {
+  id         Int        @id @default(autoincrement())
+  chassisNum String
+  model      String
+  teamId     Int
+  pilotId    Int
+  createdAt  DateTime   @default(now())
+  team       Team       @relation(fields: [teamId], references: [id])
+  pilot      Member     @relation("PilotCars", fields: [pilotId], references: [id])
+  results    Result[]
+  incidents  Incident[]
+}

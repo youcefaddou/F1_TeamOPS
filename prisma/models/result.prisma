@@ -1,0 +1,14 @@
+model Result {
+  id         Int      @id @default(autoincrement())
+  position   Int?
+  points     Int?
+  pilotId    Int
+  carId      Int
+  grandPrixId Int
+  teamId     Int
+  createdAt  DateTime @default(now())
+  pilot      Member   @relation(fields: [pilotId], references: [id])
+  car        Car      @relation(fields: [carId], references: [id])
+  grandPrix  GrandPrix @relation(fields: [grandPrixId], references: [id])
+  team       Team     @relation(fields: [teamId], references: [id])
+}
