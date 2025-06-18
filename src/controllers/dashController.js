@@ -15,7 +15,7 @@ exports.getDashboard = async (req, res) => {
             driversData = JSON.parse(data)
             teamsData = JSON.parse(teams)
             racesData = JSON.parse(races)
-        } catch (error) { 
+        } catch (error) {
             console.error('Erreur lecture drivers.json: ', error.message)
         }
         res.render('pages/dashboard', {
@@ -28,4 +28,29 @@ exports.getDashboard = async (req, res) => {
         console.error('Erreur dans getDashboard: ', error);
         res.status(500).send('Erreur serveur');
     }
-}    
+}
+
+exports.getGrandPrix = async (req, res) => {
+    try {
+        let racesData = [];
+        try {
+            const races = fs.readFileSync('data/races.json', 'utf8');
+            racesData = JSON.parse(races);
+        } catch (error) {
+            console.error('Erreur lecture races.json:', error.message);
+        }
+        
+        // Séparer les courses passées et futures
+        const { pastRaces, futureRaces } = dateService.separateRaces(racesData);
+        
+        res.render('pages/grandprix', {
+            title: 'Calendrier des Grands Prix F1 2025',
+            allRaces: racesData,
+            pastRaces: pastRaces,
+            futureRaces: futureRaces
+        });
+    } catch (error) {
+        console.error('Erreur dans getGrandPrix:', error);
+        res.status(500).send('Erreur serveur');
+    }
+};

@@ -1,0 +1,85 @@
+{% extends "../layouts/base.twig" %}
+{% block style %}
+	<link rel="stylesheet" href="./assets/css/grandPrix.css">
+{% endblock %}
+
+{% block title %}
+	<title>Calendrier F1 2025</title>
+{% endblock %}
+
+{% block main %}
+<section id="main-section">
+<div class="container">
+                <h1>Calendrier des Grands Prix F1 2025</h1>
+                
+                <!--Navi tabs -->
+                <div class="tabs-container">
+                    <button class="tab-btn active" data-tab="all">Tous les GP</button>
+                    <button class="tab-btn" data-tab="future">Prochaines courses</button>
+                    <button class="tab-btn" data-tab="past">Courses passées</button>
+                </div>
+
+                <!--Ttes les courses -->
+                <div class="tab-content active" id="all">
+                    <div class="races-grid">
+                        {% for race in allRaces %}
+                            <div class="race-card {% if race.date and race.date != 'Date à confirmer' %}
+                                {% set raceDate = race.date %}
+                                {% if 'Jun' in raceDate or 'Jul' in raceDate or 'Aug' in raceDate or 'Sep' in raceDate or 'Oct' in raceDate or 'Nov' in raceDate or 'Dec' in raceDate %}future{% else %}past{% endif %}
+                            {% else %}unknown{% endif %}">
+                                <div class="race-header">
+                                    <div class="race-country">{{ race.country }}</div>
+                                    <div class="race-date">{{ race.date ?: 'Date TBA' }}</div>
+                                </div>
+                                <div class="race-name">{{ race.gpName }}</div>
+                                <div class="race-status">
+                                    {% if race.date and 'Jun' in race.date or 'Jul' in race.date or 'Aug' in race.date %}
+                                        <span class="status upcoming">À venir</span>
+                                    {% else %}
+                                        <span class="status completed">Terminé</span>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <!--prochaines courses -->
+                <div class="tab-content" id="future">
+                    <div class="races-grid">
+                        {% for race in futureRaces %}
+                            <div class="race-card future">
+                                <div class="race-header">
+                                    <div class="race-country">{{ race.country }}</div>
+                                    <div class="race-date">{{ race.date }}</div>
+                                </div>
+                                <div class="race-name">{{ race.gpName }}</div>
+                                <div class="race-status">
+                                    <span class="status upcoming">À venir</span>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <!--courses passées -->
+                <div class="tab-content" id="past">
+                    <div class="races-grid">
+                        {% for race in pastRaces %}
+                            <div class="race-card past">
+                                <div class="race-header">
+                                    <div class="race-country">{{ race.country }}</div>
+                                    <div class="race-date">{{ race.date }}</div>
+                                </div>
+                                <div class="race-name">{{ race.gpName }}</div>
+                                <div class="race-status">
+                                    <span class="status completed">Terminé</span>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+</section>
+{% block script %}
+<script src="/assets/js/grandPrix.js"></script>
+{% endblock %}
+{% endblock %}

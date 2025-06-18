@@ -39,3 +39,19 @@ exports.getNextRaces = (races, count = 3) => {
     );
     return futureRaces.slice(0, count); // Retourne les 3 prochaines courses
 }
+
+exports.separateRaces = (races) => {
+    const today = new Date();
+    const pastRaces = [];
+    const futureRaces = [];
+    for (let race of races) {
+        const raceDate = exports.parseRaceDate(race.date);
+        if (raceDate && raceDate < today) { 
+            pastRaces.push(race)
+        }
+        else if (raceDate && raceDate >= today) {
+            futureRaces.push(race)
+        }
+    } 
+    return { pastRaces, futureRaces };
+}
