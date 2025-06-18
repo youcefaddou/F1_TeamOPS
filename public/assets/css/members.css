@@ -8,31 +8,133 @@ body {
     padding: 0;
     margin: 0;
 }
+
 #membersContainer {
-    background: rgba(255, 255, 255, 0.897);
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
     width: 90%;
+    max-width: 1400px;
     margin: auto;
-    border-radius: 10px;
+    border-radius: 16px;
     min-height: 80vh;
-    padding: 1rem;
-}
-.members-list {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 2rem;
-  padding: 2rem;
-  list-style-type: none;
-  font-weight: bold;
-  justify-items: center;
-  align-items: start;
-  max-width: 100%;
+    padding: 2rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.addMemberBtn {
+h1 {
+    font-size: 2.5rem;
+    background: linear-gradient(135deg, #e10600, #c41e3a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-align: center;
+    margin-bottom: 2rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
+
+.member-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+    padding: 2rem 1.5rem;
     display: flex;
-    justify-content: flex-end;
-    padding: 10px;
-    
+    flex-direction: column;
+    align-items: center;
+    min-width: 0;
+    max-width: 300px;
+    width: 100%;
+    margin: 0;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+}
+
+.member-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #e10600, #c41e3a);
+}
+
+.member-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+}
+
+.member-card img {
+    display: block;
+    margin: 0 auto 1rem auto;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    border: 3px solid rgba(225, 6, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.member-card:hover img {
+    transform: scale(1.05);
+    box-shadow: 0 12px 32px rgba(225, 6, 0, 0.2);
+}
+
+.member-card .member-name {
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 0.5rem;
+    color: #222;
+    font-family: 'Formula1', sans-serif;
+}
+
+.member-card .member-role {
+    font-size: 0.85rem;
+    color: #e90000;
+    text-align: center;
+    font-weight: 600;
+    background: rgba(233, 0, 0, 0.1);
+    padding: 6px 12px;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.member-actions {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.btn-edit, .btn-delete {
+    padding: 0.6rem 1.2rem;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn-edit:hover, .btn-delete:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.15);
 }
 
 #register-section {
@@ -249,92 +351,142 @@ main {
 }
 
 .member-card {
-    background: #f4f4f4;
-    border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-    padding: 1.2rem 1rem 1.5rem 1rem;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+    padding: 2rem 1.5rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     min-width: 0;
-    max-width: 220px;
+    max-width: 300px;
     width: 100%;
     margin: 0;
-    transition: box-shadow 0.2s;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
 }
+
+.member-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #e10600, #c41e3a);
+}
+
 .member-card:hover {
-    box-shadow: 0 4px 16px rgba(0,0,0,0.13);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
 }
+
 .member-card img {
     display: block;
-    margin: 0 auto 0.7rem auto;
-    width: 64px;
-    height: 64px;
+    margin: 0 auto 1rem auto;
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
     object-fit: cover;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    border: 3px solid rgba(225, 6, 0, 0.1);
+    transition: all 0.3s ease;
 }
+
+.member-card:hover img {
+    transform: scale(1.05);
+    box-shadow: 0 12px 32px rgba(225, 6, 0, 0.2);
+}
+
 .member-card .member-name {
-    font-size: 1.1rem;
-    font-weight: bold;
+    font-size: 1.2rem;
+    font-weight: 700;
     text-align: center;
-    margin-bottom: 0.3rem;
+    margin-bottom: 0.5rem;
     color: #222;
+    font-family: 'Formula1', sans-serif;
 }
 .member-card .member-role {
-    font-size: 0.95rem;
+    font-size: 0.85rem;
     color: #e90000;
     text-align: center;
-    font-weight: 500;
+    font-weight: 600;
+    background: rgba(233, 0, 0, 0.1);
+    padding: 6px 12px;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
+
 .member-actions {
     display: flex;
-    gap: 0.5rem;
+    gap: 0.75rem;
     justify-content: center;
-    margin-top: 0.7rem;
+    margin-top: 1rem;
     flex-wrap: wrap;
     width: 100%;
 }
+
 .btn-edit, .btn-delete {
-    padding: 0.4rem 1rem;
-    border-radius: 8px;
-    font-size: 0.95rem;
+    padding: 0.6rem 1.2rem;
+    border-radius: 12px;
+    font-size: 0.9rem;
     font-weight: 600;
     border: none;
     cursor: pointer;
-    transition: background 0.2s, color 0.2s;
+    transition: all 0.3s ease;
     text-decoration: none;
     display: inline-block;
     text-align: center;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
-.btn-edit {
-    background: #fff;
-    background: linear-gradient(90deg, #000, #e90000);
-    color: white;
+
+.btn-edit:hover, .btn-delete:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.15);
 }
-.btn-edit:hover {
-    background: linear-gradient(90deg, #353434, #ff3d3dc7);
-    color: #fff;
+.members-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 2rem;
+    list-style-type: none;
+    font-weight: bold;
+    align-items: start;
+    max-width: 100%;
 }
-.btn-delete {
-    background: linear-gradient(90deg, #e90000, #000);
-    color: #fff;
-}
-.btn-delete:hover {
-    background: linear-gradient(90deg, #ff3d3dc7, #353434);
-}
+
 @media (max-width: 1200px) {
   .members-list {
-    grid-template-columns: repeat(3, 1fr);
+    gap: 1.2rem;
+    padding: 1.5rem;
   }
 }
+
 @media (max-width: 900px) {
   .members-list {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.2rem;
+    gap: 1rem;
     padding: 1.2rem;
   }
 }
+
+@media (max-width: 768px) {
+  .members-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    padding: 1rem;
+  }
+}
+
 @media (max-width: 600px) {
   .members-list {
     grid-template-columns: 1fr;
