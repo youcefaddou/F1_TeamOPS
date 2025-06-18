@@ -26,7 +26,6 @@ router.post('/register', teamController.postRegister);
 router.get('/login', teamController.getLogin);
 router.post('/login', teamController.postLogin);
 router.get('/logout', teamController.getLogout);
-router.get('/dashboard', dashController.getDashboard); 
 
 router.get('/members', teamController.getMembers);
 router.post('/members/add', upload.single('avatar'), teamController.postMembers);

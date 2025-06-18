@@ -1,6 +1,31 @@
-exports.getDashboard = (req, res) => {
-    if (!req.session.team) {
-        return res.redirect('/login'); 
+const axios = require('axios');
+const fs = require('fs');
+const dateService = require('../services/dateService');
+
+
+exports.getDashboard = async (req, res) => {
+    try {
+        let driversData = []
+        let teamsData = []
+        let racesData = []
+        try {
+            const data = fs.readFileSync('data/drivers.json', 'utf8')
+            const teams = fs.readFileSync('data/teams.json', 'utf8')
+            const races = fs.readFileSync('data/races.json', 'utf8')
+            driversData = JSON.parse(data)
+            teamsData = JSON.parse(teams)
+            racesData = JSON.parse(races)
+        } catch (error) { 
+            console.error('Erreur lecture drivers.json: ', error.message)
+        }
+        res.render('pages/dashboard', {
+            title: 'Classement des pilotes',
+            drivers: driversData,
+            teams: teamsData,
+            nextRaces: dateService.getNextRaces(racesData, 3),
+        })
+    } catch (error) {
+        console.error('Erreur dans getDashboard: ', error);
+        res.status(500).send('Erreur serveur');
     }
-    res.render('./pages/dashboard.twig', { team: req.session.team }); 
-};
+}    

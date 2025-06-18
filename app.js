@@ -8,6 +8,7 @@ const dashRoutes = require('./src/routes/dashRoutes');
 const materialRoutes = require('./src/routes/materialRoutes');
 dotenv.config();
 
+app.set('view engine', 'twig');
 app.set('views', './src/views')
 app.use(express.static('./public'));
 app.use(express.urlencoded({ extended: true })); // Parse URL-encoded request bodies

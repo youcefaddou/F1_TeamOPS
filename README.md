@@ -70,6 +70,8 @@ Intégration avec une API publique F1 (pour récupérer le calendrier officiel, 
 ///////////////////////////////////////////////////////////////////////////////////////
 
 
+https://docs.rapidapi.com/
+
 npm init 
 npm i express 
 npx prisma init --datasource-provider mysql 
@@ -82,3 +84,8 @@ npm i express-session
 npm install chart.js
 npm i multer
 npm install connect-sqlite3
+npm install puppeteer
+
+On installe puppeteer qui permet de scrape des data depuis les sites web directement, on crée un dossier /scripts qui va contenir le script qui s'executera lorsqu'on tapera la commande node scripts/nomDuScript.js 
+Cela sauvegardera un JSON dans le dossier /data qu'on aura crée également avant d'éxecuter le script
+Pour le script, il faut se baser sur les balises des données qu'on veut récupérer et adapter en conséquence

@@ -11,9 +11,96 @@
 	<main>
 		<section id="dashboard-section">
 			<h1>Tableau de bord</h1>
+			<div class="dashboard-bento-main">
+				<div class="bento-row">
+					<div class="bento-col-50">
+						<div class="bento-container">
+							<div class="bento-title">Classement Constructeurs</div>
+							{% if teams and teams|length > 0 %}
+								<div class="bento-table-container">
+									<table class="bento-table">
+										<thead>
+											<tr>
+												<th>Position</th>
+												<th>Constructeur</th>
+												<th>Points</th>
+											</tr>
+										</thead>
+										<tbody>
+											{% for team in teams %}
+												<tr>
+													<td>{{ team.position }}</td>
+													<td>{{ team.team }}</td>
+													<td>{{ team.points }}</td>
+												</tr>
+											{% endfor %}
+										</tbody>
+									</table>
+								</div>
+							{% else %}
+								<p>Aucune donnée disponible.</p>
+							{% endif %}
+						</div>
+					</div>
 
-            <p>Bienvenue sur le tableau de bord de votre équipe </p>
-			
+					<div class="bento-col-50">
+						<div class="bento-container">
+							<div class="bento-title">Classement Pilotes</div>
+							{% if drivers and drivers|length > 0 %}
+								<div class="bento-table-container">
+									<table class="bento-table">
+										<thead>
+											<tr>
+												<th>Position</th>
+												<th>Pilote</th>
+												<th>Équipe</th>
+												<th>Points</th>
+											</tr>
+										</thead>
+										<tbody>
+											{% for driver in drivers %}
+												<tr>
+													<td>{{ driver.position }}</td>
+													<td>{{ driver.name }}</td>
+													<td>{{ driver.team }}</td>
+													<td>{{ driver.points }}</td>
+												</tr>
+											{% endfor %}
+										</tbody>
+									</table>
+								</div>
+							{% else %}
+								<p>Aucune donnée disponible.</p>
+							{% endif %}
+						</div>
+					</div>
+				</div>
+
+				<div class="bento-right-col">
+					<div class="bento-container bento-right-half">
+						<div class="bento-title">Les Prochains Grands Prix</div>
+						{% if nextRaces and nextRaces|length > 0 %}
+							<div class="next-races-container">
+								{% for race in nextRaces %}
+									<div class="race-item">
+										<div class="race-header">
+											<h4 class="race-country">{{ race.country }}</h4>
+											<span class="race-date">{{ race.date }}</span>
+										</div>
+										<p class="race-name">{{ race.gpName }}</p>
+									</div>
+								{% endfor %}
+							</div>
+						{% else %}
+							<p class="bento-coming">Aucune course à venir...</p>
+						{% endif %}
+					</div>
+					<div class="bento-container bento-right-half">
+						<div class="bento-title">Statistiques de mon équipe</div>
+						<p class="bento-coming">À venir…</p>
+					</div>
+				</div>
+			</div>
 		</section>
 	</main>
 {% endblock %}
