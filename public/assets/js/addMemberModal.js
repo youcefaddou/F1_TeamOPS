@@ -1,3 +1,5 @@
+console.log('Add Member Modal script loaded');
+
 document.addEventListener('DOMContentLoaded', function() {
     const openBtn = document.getElementById('openAddMemberModal');
     const closeBtn = document.getElementById('closeAddMemberModal');
