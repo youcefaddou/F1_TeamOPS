@@ -1,0 +1,60 @@
+{% extends "../layouts/base.twig" %}
+
+{% block style %}
+	<link rel="stylesheet" href="/assets/css/prediction.css">
+{% endblock %}
+
+{% block title %}
+	<title>{{ title }}</title>
+{% endblock %}
+
+{% block main %}
+	<main>
+		<section id="prediction-section">
+			<div class="prediction-container">
+				<h1>
+					<i class="fas fa-robot"></i>
+					Prédiction IA - Prochaine Course</h1>
+
+				<div class="prediction-intro">
+					<p>Notre IA analyse les performances actuelles des pilotes pour prédire les résultats de la prochaine course.</p>
+					<button id="predictBtn" class="predict-btn">
+						<i class="fas fa-magic"></i>
+						Lancer la Prédiction
+					</button>
+				</div>
+				<div id="loadingDiv" class="loading" style="display: none;">
+					<i class="fas fa-spinner spinning"></i>
+					Calcul en cours...
+				</div>
+
+				<div id="resultsDiv" class="results" style="display: none;">
+					<h2>Résultats Prédits</h2>
+					<div class="predictions-grid">
+						<div class="current-standings">
+							<h3>Classement Actuel</h3>
+							<div class="standings-list">
+								{% for driver in drivers %}
+									<div class="driver-item current">
+										<span class="position">P{{ driver.position }}</span>
+										<span class="name">{{ driver.name }}</span>
+										<span class="points">{{ driver.points }} pts</span>
+									</div>
+								{% endfor %}
+							</div>
+						</div>
+
+						<div class="predicted-standings">
+							<h3>Prédiction IA</h3>
+							<div id="predictionsList" class="standings-list"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+{% endblock %}
+
+{% block script %}
+	<script src="/assets/js/prediction.js"></script>
+{% endblock %}
