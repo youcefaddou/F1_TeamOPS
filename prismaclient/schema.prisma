@@ -2,7 +2,6 @@ model Car {
   id         Int        @id @default(autoincrement())
   chassisNum String
   model      String
-  state      String
   teamId     Int
   pilotId    Int
   createdAt  DateTime   @default(now())

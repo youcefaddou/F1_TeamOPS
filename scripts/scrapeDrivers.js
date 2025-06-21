@@ -15,9 +15,6 @@ const fs = require('fs');
     // const htmlContent = await page.content();
     // fs.writeFileSync('data/pageContent.html', htmlContent);
 
-    // Capturer une capture d'écran pour vérifier visuellement
-    // await page.screenshot({ path: 'data/screenshot.png' });
-
     // Vérifier la présence de la table
     const data = await page.evaluate(() => {
         const rows = document.querySelectorAll('.f1-table tbody tr');

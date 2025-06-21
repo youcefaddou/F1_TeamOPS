@@ -85,7 +85,11 @@ npm install chart.js
 npm i multer
 npm install connect-sqlite3
 npm install puppeteer
+npm install @tensorflow/tfjs
+
 
 On installe puppeteer qui permet de scrape des data depuis les sites web directement, on crée un dossier /scripts qui va contenir le script qui s'executera lorsqu'on tapera la commande node scripts/nomDuScript.js 
 Cela sauvegardera un JSON dans le dossier /data qu'on aura crée également avant d'éxecuter le script
 Pour le script, il faut se baser sur les balises des données qu'on veut récupérer et adapter en conséquence
+
+

@@ -75,6 +75,12 @@ h1 {
     overflow: hidden;
 }
 
+.bento-right-half {
+    margin-bottom: 2em;
+}
+.bento-right-half:nth-last-child(1) {
+    margin-bottom: 0;
+}
 .bento-container::before {
     content: '';
     position: absolute;
@@ -164,6 +170,7 @@ h1 {
     color: #e10600;
     font-size: 1rem;
 }
+
 .next-races-container {
     display: flex;
     flex-direction: column;
@@ -248,15 +255,33 @@ h1 {
         grid-template-columns: 1fr;
         gap: 1.5rem;
     }
-    
+
+    .bento-container {
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        min-height: 50vh;
+    }
+
     .bento-row {
         flex-direction: row;
+    }
+
+    .bento-right-half {
+        margin-bottom: 1.8em;
     }
 }
 
 @media (max-width: 900px) {
     .dashboard-bento-main {
         grid-template-columns: 1fr;
+    }
+
+    .bento-container {
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        min-height: 50vh;
     }
 
     .bento-row {
@@ -275,29 +300,32 @@ h1 {
         padding: 1rem;
         width: 95%;
     }
-    
+
     h1 {
         font-size: 2rem;
     }
-    
+
     .bento-container {
         padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        min-height: 50vh;
     }
-    
+
     .bento-title {
         font-size: 1.1rem;
     }
-    
+
     .bento-right-col {
         flex-direction: column;
     }
-    
+
     .bento-table th,
     .bento-table td {
         padding: 0.6rem 0.4rem;
         font-size: 0.85rem;
     }
-    
+
     .race-item {
         padding: 12px;
     }
@@ -307,17 +335,19 @@ h1 {
     .dashboard-bento-main {
         gap: 1rem;
     }
-    
+.bento-right-half {
+        margin-bottom: 0.8em;
+    }
     .bento-table th,
     .bento-table td {
         padding: 0.5rem 0.3rem;
         font-size: 0.8rem;
     }
-    
+
     .race-country {
         font-size: 0.9rem;
     }
-    
+
     .race-date {
         font-size: 0.75rem;
         padding: 3px 6px;

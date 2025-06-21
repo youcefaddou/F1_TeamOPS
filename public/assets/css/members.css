@@ -136,6 +136,10 @@ h1 {
     transform: translateY(-2px);
     box-shadow: 0 6px 24px rgba(0, 0, 0, 0.15);
 }
+.btn-edit:hover {
+    background: linear-gradient(90deg, #e10600, #c41e3a);
+    color: #fff;
+}
 
 #register-section {
     background: #f4f4f4;

@@ -1,18 +1,25 @@
 {
   "name": "f1_teamops",
   "version": "1.0.0",
-  "main": "app.js",
-  "prisma": {
-    "schema": "./prisma"
+  "description": "Cahier des charges détaillé — F1 TeamOps",
+  "homepage": "https://github.com/youcefaddou/F1_TeamOPS#readme",
+  "bugs": {
+    "url": "https://github.com/youcefaddou/F1_TeamOPS/issues"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/youcefaddou/F1_TeamOPS.git"
+  },
+  "license": "ISC",
+  "author": "Youyou",
+  "type": "commonjs",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Youyou",
-  "license": "ISC",
-  "description": "",
   "dependencies": {
     "@prisma/client": "^6.9.0",
+    "@tensorflow/tfjs": "^4.22.0",
     "axios": "^1.10.0",
     "bcrypt": "^6.0.0",
     "chart.js": "^4.4.9",
@@ -27,5 +34,8 @@
   },
   "devDependencies": {
     "prisma": "^6.9.0"
+  },
+  "prisma": {
+    "schema": "./prisma"
   }
 }
