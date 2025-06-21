@@ -47,12 +47,24 @@
 				{# <button id="openAddMemberModal" class="btn-add-member">Ajouter un membre</button> #}
 			</div>
 
-			<ul class="members-list">
-				{% for member in members %}
-					<li class="member-card" data-member-id="{{ member.id }}" data-member-firstname="{{ member.firstName }}" data-member-lastname="{{ member.lastName }}" data-member-email="{{ member.email }}" data-member-role="{{ member.role }}" data-member-nationality="{{ member.nationality }}" data-member-age="{{ member.age }}">
-						{% if member.avatarUrl %}
-							<img src="{{ member.avatarUrl }}" alt="avatar">
-						{% endif %}
+			<ul class="members-list">				
+			{% for member in members %}
+					<li class="member-card" data-member-id="{{ member.id }}" 
+						data-member-firstname="{{ member.firstName }}" 
+						data-member-lastname="{{ member.lastName }}" 
+						data-member-email="{{ member.email }}" 
+						data-member-role="{{ member.role }}" 
+						data-member-nationality="{{ member.nationality }}" 
+						data-member-age="{{ member.age }}">
+							<div class="member-avatar">
+								{% if member.avatarUrl %}
+									<img src="{{ member.avatarUrl }}" alt="avatar de {{ member.firstName }} {{ member.lastName }}">
+								{% else %}
+								<div class="default-avatar">
+									<i class="fas fa-user"></i>
+								</div>
+								{% endif %}
+							</div>
 						<span class="member-name">{{ member.firstName }}
 							{{ member.lastName }}</span>
 						<span class="member-role">{{ member.role }}</span>
